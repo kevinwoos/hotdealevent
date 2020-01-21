@@ -1,0 +1,36 @@
+spring:
+  redis:
+    host: localhost
+    port: 6379
+  profiles:
+    active: local
+  data:
+    cassandra:
+      contact-points: localhost
+      port: 9042
+      keyspace-name: hotdeal
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: group_id
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+logging:
+  path: logs/spring/
+  level:
+    org.springframework: DEBUG
+    com.garage.poc: DEBUG
+
+---
+spring:
+  profiles: local
+
+---
+spring:
+  profiles: real

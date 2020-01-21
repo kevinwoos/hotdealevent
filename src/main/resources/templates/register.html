@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+<title>HTML5 Navigation Bar Example - Example 1</title>
+<link href="css/main.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="box-container">
+		<!-- <nav>
+          <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="components/blog.html">Blog</a></li>
+          </ul>
+      </nav> -->
+		<button class="buttonWhite button2">
+			<a href="index.html">Home</a>
+		</button>
+		<button class="buttonBlue button2">
+			<a href="components/blog.html">Blog</a>
+		</button>
+	</div>
+
+	<br>
+	<div class="box-container">
+
+
+
+		<div class="card">
+			<img src="images/penha.jpg" alt="penha" style="width: 100%">
+			<div class="container">
+				<h4>
+					<b>Springboot Redis Lab Test</b>
+				</h4>
+				<p>code by Gus</p>
+				<h2>이벤트 처리</h2>
+
+				<!-- Trigger/Open The Modal -->
+				<button id="myBtn">진행중</button>
+
+				<!-- The Modal -->
+				<div id="myModal" class="modal">
+
+					<!-- Modal content -->
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h3>게시글 작성</h3>
+						<div style="padding: 30px;">
+
+							<form class="" action="http://localhost:8080/cache/dup"
+								method="post">
+								<div class="form-group">
+									<label>이벤트회차</label> <input type="text" name="eventId"
+										value='20011000' readOnly>
+								</div>
+								<div class="form-group">
+									<label>이름</label> <input type="text" name="name">
+								</div>
+								<div class="form-group">
+									<label>핸드폰번호</label> <input type="text" name="phoneNo" rows="5" />
+								</div>
+								<div class="form-group">
+									<label>동의여부</label> <input type="checkbox" name="isagree" />
+								</div>
+
+								<button type="submit" class="btn btn-default">작성</button>
+
+							</form>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<script src="js/event.js"></script>
+</body>
+</html>

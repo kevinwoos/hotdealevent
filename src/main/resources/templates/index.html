@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+<title>HTML5 Navigation Bar Example - Example 1</title>
+<link href="css/main.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="box-container">
+		<!-- <nav>
+          <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="components/blog.html">Blog</a></li>
+          </ul>
+      </nav> -->
+		<button class="buttonWhite button2">
+			<a href="index.html">Home</a>
+		</button>
+		<button class="buttonBlue button2">
+			<a href="components/blog.html">Blog</a>
+		</button>
+	</div>
+
+	<br>
+	<div class="box-container">
+
+
+
+		<div class="card">
+			<img src="images/hotdeal.png" alt="hotdeal" style="width: 100%">
+			<div class="container">
+<!-- 				<h4>
+					<b>Springboot Redis Lab Test</b>
+				</h4>
+				<p>code by Gus</p>
+				<h2>이벤트 처리</h2> -->
+
+				<!-- Trigger/Open The Modal -->
+				<button id="myBtn">진행중</button>
+
+				<!-- The Modal -->
+				<div id="myModal" class="modal">
+
+					<!-- Modal content -->
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<p>사용자 정보입력</p>
+
+						<table>
+							<form class=""  target = "ifrm" id="myForm" >
+								<tr>
+									<td><label for="eventId">이벤트회차</label></td>
+									<td><input type="text" name="eventId" value='20011000' readOnly  /></td>
+								</tr>
+								<tr>
+									<td><label for="name">이름</label></td>
+									<td><input type="text" name="name" /></td>
+								</tr>
+								<tr>
+									<td><label for="phoneNo">핸드폰번호</label></td>
+									<td><input type="text" name="phoneNo" /></td>
+								</tr>
+								<tr>
+									<td><label for="isagree">동의여부</label></td>
+									<td><input type="checkbox" name="isagree" /></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><input type="submit" name="submit" /></td>
+								</tr>
+
+							</form>
+							<iframe name='ifrm' width='0' height='0' frameborder='0'></iframe>
+						</table>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="js/event.js"></script>
+</body>
+</html>

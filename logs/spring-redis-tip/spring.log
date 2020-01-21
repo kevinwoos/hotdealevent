@@ -1,0 +1,52 @@
+2020-01-14 11:53:37.526  INFO 11956 --- [main] com.garage.poc.HotdealeventApplication   : Starting HotdealeventApplication on DESKTOP-8EQSHKC with PID 11956 (D:\workspace-sts\hotdealevent\target\classes started by admin in D:\workspace-sts\hotdealevent)
+2020-01-14 11:53:37.528  INFO 11956 --- [main] com.garage.poc.HotdealeventApplication   : The following profiles are active: local
+2020-01-14 11:53:37.963  INFO 11956 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-01-14 11:53:37.964  INFO 11956 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Cassandra repositories in DEFAULT mode.
+2020-01-14 11:53:37.999  INFO 11956 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Cassandra - Could not safely identify store assignment for repository candidate interface com.garage.poc.redis.repository.CustomerRedisRepository. If you want this repository to be a Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.CassandraRepository.
+2020-01-14 11:53:38.011  INFO 11956 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44ms. Found 1 Cassandra repository interfaces.
+2020-01-14 11:53:38.014  INFO 11956 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-01-14 11:53:38.014  INFO 11956 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-01-14 11:53:38.025  INFO 11956 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1ms. Found 0 Redis repository interfaces.
+2020-01-14 11:53:38.173  INFO 11956 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-01-14 11:53:38.174  INFO 11956 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive Cassandra repositories in DEFAULT mode.
+2020-01-14 11:53:38.185  INFO 11956 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Reactive Cassandra - Could not safely identify store assignment for repository candidate interface com.garage.poc.redis.repository.CustomerRedisRepository. If you want this repository to be a Reactive Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.ReactiveCassandraRepository.
+2020-01-14 11:53:38.185  INFO 11956 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10ms. Found 0 Reactive Cassandra repository interfaces.
+2020-01-14 11:53:38.195  INFO 11956 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-01-14 11:53:38.196  INFO 11956 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-01-14 11:53:38.205  INFO 11956 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.garage.poc.cassandra.repository.CustomerCassandraRepository. If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: javax.persistence.Entity, javax.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository.
+2020-01-14 11:53:38.206  INFO 11956 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.garage.poc.redis.repository.CustomerRedisRepository. If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: javax.persistence.Entity, javax.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository.
+2020-01-14 11:53:38.206  INFO 11956 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7ms. Found 0 JPA repository interfaces.
+2020-01-14 11:53:38.212  INFO 11956 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-01-14 11:53:38.212  INFO 11956 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-01-14 11:53:38.217  INFO 11956 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.garage.poc.cassandra.repository.CustomerCassandraRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2020-01-14 11:53:38.222  INFO 11956 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9ms. Found 1 Redis repository interfaces.
+2020-01-14 11:53:38.463  INFO 11956 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-14 11:53:38.672  INFO 11956 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-01-14 11:53:38.679  INFO 11956 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-14 11:53:38.679  INFO 11956 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-01-14 11:53:38.778  INFO 11956 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-14 11:53:38.778  INFO 11956 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1221 ms
+2020-01-14 11:53:38.824  WARN 11956 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
+2020-01-14 11:53:38.826  INFO 11956 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-01-14 11:53:38.837  INFO 11956 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-01-14 11:53:38.850 ERROR 11956 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
