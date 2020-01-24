@@ -11,18 +11,23 @@ import com.garage.poc.kafka.domain.KafkaCustomer;
 @Service
 public class CustomerProvider {
 
-    private static final Logger logger = LoggerFactory.getLogger(CustomerProvider.class);
-    private static final String TOPIC = "hotdeal";
+	private static final Logger logger = LoggerFactory.getLogger(CustomerProvider.class);
+	private static final String TOPIC = "hotdeal";
 
-    @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;
+	@Autowired
+	// private KafkaTemplate<String, String> kafkaTemplate;
+	private KafkaTemplate<String, KafkaCustomer> kafkaTemplate;
 
-    public void sendMessage(String message) {
-        logger.info(String.format("#### -> Producing message -> %s", message));
-        this.kafkaTemplate.send(TOPIC, message);
-    }
-    public void sendMessage(KafkaCustomer cust) {
-        logger.info(String.format("#### -> Producing message -> %s", cust.toString()));
-        this.kafkaTemplate.send(TOPIC, message);
-    }
+	/*
+	 * public void sendMessage(String message) {
+	 * logger.info(String.format("#### -> Producing message -> %s", message));
+	 * this.kafkaTemplate.send(TOPIC, message); }
+	 */
+
+	public void sendMessage(KafkaCustomer kafkaCustomer) {
+
+		logger.info(String.format("#### -> Producing message -> %s", kafkaCustomer.toString()));
+		this.kafkaTemplate.send(TOPIC, kafkaCustomer);
+	}
+
 }

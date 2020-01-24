@@ -76,7 +76,35 @@ public class CassandraController {
     }
     // http://localhost:8080/cassandra/save?eventId=20010900&phoneNo=01012345679&name=ABC
     // http://localhost:8080/cache/get?eventId=20010900&phoneNo=01012345678
+    @GetMapping("/cassandra/test")
+    public String test(@RequestParam String phoneNo, @RequestParam String eventId) {
+    	
+    	//public CassandraCustomer save(@RequestParam String eventId,   	
+    	//CassandraConfig configs = new CassandraConfig();
+    	
+    	//log.info(">>>>>>> [save] Config = " + configs.getInfo());
+    	
+        // Input Check Routine
+    	
+    	log.info(">>>>>>> [test] Customer{" + phoneNo + " eventId=" + eventId);
+    	
 
+        
+        String str = "  { \"result_code\": 200, \"result_msg\": \"SUCCESS\", \"data\": { \"event_id\":\n" + 
+        		"            	  \"2020011301\", \"phone_num\": \"01012345678\", \"name\": \"홍길동\" } }";
+            	
+            	
+            	 
+    	/*
+    	 * { "result_code": 200, "result_msg": "SUCCESS", "data": { "event_id":
+    	 * "2020011301", "phone_num": "01012345678", "name": "홍길동" } }
+    	 */
+
+        return str;
+        //return cust;
+    }
+    // http://localhost:8080/cassandra/save?eventId=20010900&phoneNo=01012345679&name=ABC
+    // http://localhost:8080/cache/get?eventId=20010900&phoneNo=01012345678
 }
 
 // :set nohints

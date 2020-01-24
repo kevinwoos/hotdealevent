@@ -12,7 +12,7 @@ public class HotdealEventController {
 
 	int flag;
 	
-	@RequestMapping("/index")
+	@RequestMapping("/index2")
 	public String index() {
 		
 		//return "redirect:/index2";
@@ -20,7 +20,7 @@ public class HotdealEventController {
 		return "index";
 	}
 	
-	@RequestMapping("/index2")
+	@RequestMapping("/index")
 	public ModelAndView index2(ModelAndView mav) {
 		
 		int res  = 0;
@@ -29,9 +29,31 @@ public class HotdealEventController {
 			res += i;
 		}
 		
+		
 		mav.addObject("msg", "total: " + res);
-		mav.setViewName("register");
+		mav.setViewName("index");
+		log.info(mav.toString());
 		
 		return mav;
 	}
+	
+	
+	@RequestMapping("/index3")
+	public ModelAndView index3(ModelAndView mav) {
+		
+	
+		mav.addObject("result_code", "200");
+		mav.addObject("result_msg", "SUCCESS");
+		mav.addObject("data", " \"event_id\":\r\n" + 
+				"\"2020011301\", \"phone_num\": \"01012345678\", \"name\": \"홍길동\"");
+		mav.setViewName("index");
+		log.info(mav.toString());
+		
+		return mav;
+	}	
+	
+	/*
+	 * { "result_code": 200, "result_msg": "SUCCESS", "data": { "event_id":
+	 * "2020011301", "phone_num": "01012345678", "name": "홍길동" } }
+	 */
 }

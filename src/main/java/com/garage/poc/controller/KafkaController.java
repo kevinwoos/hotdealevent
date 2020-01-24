@@ -29,6 +29,8 @@ public class KafkaController {
 		KafkaCustomer cust = new KafkaCustomer(eventId, phoneNo, name, LocalDateTime.now());
 		customerProvider.sendMessage(cust);
 		
+		// http://localhost:8080/provider?eventId=20010900&phoneNo=01012345679&name=ABC
+			
 		return cust.toString();
 	}
 	
