@@ -3,10 +3,16 @@
 var eventSuccess = false;
 
 var modal = document.getElementById("myModal");
-var resultOk = document.getElementById("id-result-ok");
-var resultFail = document.getElementById("id-result-fail");
-var eventWait = document.getElementById("id-event-wait");
-var eventClose = document.getElementById("id-event-close");
+
+var eventMessage = document.getElementById("id-event-message");
+var eventMessageList = [
+	"정상적으로 등록되었습니다.",	// 200
+	"이벤트 준비중입니다. 잠시 후 이용해 주헤요!!",	// 511
+	"이벤트가 종료되었습니다.",	// 512
+	"이벤트 중복 오류입니다. !!",  // 513
+	""						// 미정의
+	];
+var eventMessageNo = 1;
 
 var eventImage = document.getElementById("id-event-image");
 
@@ -69,21 +75,27 @@ window.addEventListener( "load", function () {
 				switch(obj.result_code) {
 					case 200:
 						alert(obj.result_msg);
-						showEventButton(1);					
+						eventMessageNo = 0;
+						showEventButton(false);	
 						break;
 					case 511:
 						alert(obj.result_msg);
-						showEventButton(3);
+						eventMessageNo = 1;
+						showEventButton(false);
 						break;
 					case 512:
 						alert(obj.result_msg);
-						showEventButton(4);				
+						eventMessageNo = 2;
+						showEventButton(false);
 					case 513:
 						alert(obj.result_msg);
-						showEventButton(2);	
+						eventMessageNo = 3;
+						showEventButton(false);
 					default :
 						alert(obj.result_msg);
-						showEventButton(2);	
+						eventMessageNo = 4;
+						eventMessageList[4] = obj.result_msg;
+						showEventButton(false);
 				//if (obj.result_code
 				//showEventButton(1);
 				}
@@ -121,56 +133,29 @@ window.addEventListener( "load", function () {
 });
 
 window.onload  = function() {
-	
-  setTimeout("showEventButton(5)", 1000); 
+	showEventButton(false);
+  setTimeout("showEventButton(true)", 3000); 
 }
 
 
-function showEventButton(type) {
+function showEventButton(flag) {
 	/*
   resultOk.style.display = "none";
   resultFail.style.display = "none";
   eventWait.style.display = "none";
   btn.style.display = "block";
   */
-
-	switch(type) {
-		case 1 :
-			resultOk.style.display = "block";
-			resultFail.style.display = "none";
-			eventWait.style.display = "none";
-			eventClose.style.display = "none";
-			btn.style.display = "none";
-			break;
-		case 2 :
-			resultOk.style.display = "none";
-			resultFail.style.display = "block";
-			eventWait.style.display = "none";
-			eventClose.style.display = "none";
-			btn.style.display = "none";
-			break;
-		case 3 :
-			resultOk.style.display = "none";
-			resultFail.style.display = "none";
-			eventWait.style.display = "block";
-			eventClose.style.display = "none";
-			btn.style.display = "none";
-			break;	
-		case 4 :
-			resultOk.style.display = "none";
-			resultFail.style.display = "none";
-			eventWait.style.display = "none";
-			eventClose.style.display = "block";
-			btn.style.display = "none";
-			break;	
-		default :
-			resultOk.style.display = "none";
-			resultFail.style.display = "none";
-			eventWait.style.display = "none";
-			eventClose.style.display = "none";
-			btn.style.display = "block";
-			break;			
+	if (flag) {
+		eventMessage.style.display = "none";
+		btn.style.display = "block";
+	} else {
+		btn.style.display = "none";	
+		eventMessage.innerHTML = "<p>" + eventMessageList[eventMessageNo] + "</p>";
+		eventMessage.style.display = "block";
+		//eventMessage.innerHTML = "<p>" + eventMessageList[eventMessageNo] + "</p>";
+		
 	}
+
 }
 /*
 setInterval("ozit_interval_test()", 5000);
