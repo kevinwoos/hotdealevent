@@ -1,27 +1,41 @@
 spring:
+#  main:
+#    allow-bean-definition-overriding: true
   redis:
     host: localhost
     port: 6379
-  profiles:
-    active: local
   data:
     cassandra:
       contact-points: localhost
       port: 9042
       keyspace-name: hotdeal
-  kafka:
-    consumer:
-      bootstrap-servers: localhost:9092
-      group-id: group_id
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-      #value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    producer:
-      bootstrap-servers: localhost:9092
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-      #value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    mongodb:
+      host: localhost
+      database: hotdeal
+      port: 27017
+      #uri: mongodb://logcalhost:27017
+
+#  kafka:
+#    consumer:
+#      bootstrap-servers: localhost:9092
+#      group-id: group_id
+#      auto-offset-reset: earliest
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+#
+#    producer:
+#      bootstrap-servers: localhost:9092
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+
+#  profiles:
+#    active: local
+  # Spring Profiles, 리스트로 등록
+  profiles:
+    include:
+#    - config
+    - kafka
 
 logging:
   path: logs/spring/
