@@ -100,12 +100,9 @@ nav > ul > li > a {
 }
 
 .event-image {
-	max-width: 90%;
-	
-	
-	padding-left: 35px;
+	/* padding-left: 35px; */
 	/* padding-right: 35px;*/
-	 	margin: 20px 20px 2px 20px;
+	margin: 20px 20px 2px 20px;
 }
 
 .button {

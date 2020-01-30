@@ -1,14 +1,816 @@
-2020-01-28 17:46:07.402  INFO 10720 --- [http-nio-8080-exec-4] c.g.poc.controller.CassandraController   : >>>>>>> [save] Customer{010-6755-5755 eventId=2020010101 name=우경덕}
-2020-01-28 17:46:07.402  INFO 10720 --- [http-nio-8080-exec-4] c.g.poc.controller.CassandraController   : >>>>>>> [save] Customer{true
-2020-01-28 17:46:07.402  INFO 10720 --- [http-nio-8080-exec-4] c.g.poc.controller.CassandraController   : >>>>>>> [save] key=CustomerKey{phoneNo='010-6755-5755', eventId=2020010101}
-2020-01-28 17:46:07.407  INFO 10720 --- [http-nio-8080-exec-4] c.g.poc.controller.CassandraController   : >>>>>>> [save] cust=Customer{key=CustomerKey{phoneNo='010-6755-5755', eventId=2020010101}, name=우경덕, refreshTime=2020-01-28T17:46:07.407}
-2020-01-28 17:46:07.441  INFO 10720 --- [http-nio-8080-exec-4] c.g.poc.controller.CassandraController   : >>>>>>> [save] cust=Customer{key=CustomerKey{phoneNo='010-6755-5755', eventId=2020010101}, name=우경덕, refreshTime=2020-01-28T17:46:07.407}
-2020-01-28 17:46:07.441  INFO 10720 --- [http-nio-8080-exec-4] c.g.poc.controller.CassandraController   : >>>>>>> [save] cust=Customer{key=CustomerKey{phoneNo='010-6755-5755', eventId=2020010101}, name=우경덕, refreshTime=2020-01-28T17:46:07.407}
-2020-01-28 18:31:10.828  WARN 10720 --- [cluster1-worker-0] licationStrategy$NetworkTopologyStrategy : Error while computing token map for keyspace demodb with datacenter datacenter1: could not achieve replication factor 3 (found 1 replicas only), check your keyspace replication settings.
-2020-01-28 18:31:10.830  WARN 10720 --- [cluster1-worker-0] licationStrategy$NetworkTopologyStrategy : Error while computing token map for keyspace hotdeals with datacenter DC1-kt-data-garage: could not achieve replication factor 3 (found 0 replicas only), check your keyspace replication settings.
-2020-01-28 18:39:26.901  INFO 10720 --- [RMI TCP Connection(4)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
-2020-01-28 18:39:26.918  INFO 10720 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Member consumer-1-942f7388-b4ea-4b99-8c50-463daf57f1ef sending LeaveGroup request to coordinator DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com:9092 (id: 2147483647 rack: null)
-2020-01-28 18:39:26.919  INFO 10720 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-1, groupId=HOTDEALS] Unsubscribed all topics or patterns and assigned partitions
-2020-01-28 18:39:26.919  INFO 10720 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService
-2020-01-28 18:39:26.928  INFO 10720 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] essageListenerContainer$ListenerConsumer : HOTDEALS: Consumer stopped
-2020-01-28 18:39:26.941  INFO 10720 --- [RMI TCP Connection(4)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-29 12:15:35.053  INFO 1844 --- [main] com.garage.poc.HotdealeventApplication   : Starting HotdealeventApplication on DESKTOP-8EQSHKC with PID 1844 (D:\workspace-sts\hotdealevent\target\classes started by admin in D:\workspace-sts\hotdealevent)
+2020-01-29 12:15:35.059  INFO 1844 --- [main] com.garage.poc.HotdealeventApplication   : The following profiles are active: kafka
+2020-01-29 12:15:35.658  INFO 1844 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-01-29 12:15:35.659  INFO 1844 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-01-29 12:15:35.678  INFO 1844 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5ms. Found 0 Redis repository interfaces.
+2020-01-29 12:15:35.803  INFO 1844 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-01-29 12:15:35.804  INFO 1844 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive Cassandra repositories in DEFAULT mode.
+2020-01-29 12:15:35.851  INFO 1844 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Reactive Cassandra - Could not safely identify store assignment for repository candidate interface com.garage.poc.redis.repository.CustomerRedisRepository. If you want this repository to be a Reactive Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.ReactiveCassandraRepository.
+2020-01-29 12:15:35.851  INFO 1844 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46ms. Found 0 Reactive Cassandra repository interfaces.
+2020-01-29 12:15:35.857  INFO 1844 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-01-29 12:15:35.857  INFO 1844 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Cassandra repositories in DEFAULT mode.
+2020-01-29 12:15:35.863  INFO 1844 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Cassandra - Could not safely identify store assignment for repository candidate interface com.garage.poc.redis.repository.CustomerRedisRepository. If you want this repository to be a Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.CassandraRepository.
+2020-01-29 12:15:35.879  INFO 1844 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21ms. Found 1 Cassandra repository interfaces.
+2020-01-29 12:15:35.885  INFO 1844 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-01-29 12:15:35.885  INFO 1844 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-01-29 12:15:35.891  INFO 1844 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.garage.poc.cassandra.repository.CustomerCassandraRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2020-01-29 12:15:35.896  INFO 1844 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11ms. Found 1 Redis repository interfaces.
+2020-01-29 12:15:36.484  INFO 1844 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-01-29 12:15:36.499  INFO 1844 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-29 12:15:36.500  INFO 1844 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-01-29 12:15:36.657  INFO 1844 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-29 12:15:36.657  INFO 1844 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1554 ms
+2020-01-29 12:15:36.766  INFO 1844 --- [main] com.datastax.driver.core                 : DataStax Java driver 3.7.2 for Apache Cassandra
+2020-01-29 12:15:36.773  INFO 1844 --- [main] c.d.driver.core.GuavaCompatibility       : Detected Guava >= 19 in the classpath, using modern compatibility layer
+2020-01-29 12:15:36.951  INFO 1844 --- [main] com.datastax.driver.core.Native          : Could not load JNR C Library, native system calls through this library will not be available (set this logger level to DEBUG to see the full stack trace).
+2020-01-29 12:15:36.951  INFO 1844 --- [main] com.datastax.driver.core.ClockFactory    : Using java.lang.System clock to generate timestamps.
+2020-01-29 12:15:37.286  INFO 1844 --- [main] com.datastax.driver.core.NettyUtil       : Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+2020-01-29 12:15:39.595  WARN 1844 --- [main] com.datastax.driver.core.Cluster         : You listed localhost/0:0:0:0:0:0:0:1:9042 in your contact points, but it wasn't found in the control host's system.peers at startup
+2020-01-29 12:15:39.686  WARN 1844 --- [main] licationStrategy$NetworkTopologyStrategy : Error while computing token map for keyspace demodb with datacenter datacenter1: could not achieve replication factor 3 (found 1 replicas only), check your keyspace replication settings.
+2020-01-29 12:15:39.688  WARN 1844 --- [main] licationStrategy$NetworkTopologyStrategy : Error while computing token map for keyspace hotdeals with datacenter DC1-kt-data-garage: could not achieve replication factor 3 (found 0 replicas only), check your keyspace replication settings.
+2020-01-29 12:15:39.688  INFO 1844 --- [main] c.d.d.c.p.DCAwareRoundRobinPolicy        : Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+2020-01-29 12:15:39.690  INFO 1844 --- [main] com.datastax.driver.core.Cluster         : New Cassandra host localhost/127.0.0.1:9042 added
+2020-01-29 12:15:40.120  INFO 1844 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-29 12:15:40.170  INFO 1844 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-01-29 12:15:40.311  INFO 1844 --- [main] o.a.k.clients.admin.AdminClientConfig    : AdminClientConfig values: 
+	bootstrap.servers = [localhost:9092]
+	client.dns.lookup = default
+	client.id = 
+	connections.max.idle.ms = 300000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 120000
+	retries = 5
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+
+2020-01-29 12:15:40.341  INFO 1844 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 2.3.1
+2020-01-29 12:15:40.342  INFO 1844 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 18a913733fb71c01
+2020-01-29 12:15:40.342  INFO 1844 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1580267740340
+2020-01-29 12:15:40.569  INFO 1844 --- [main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = default
+	client.id = 
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = HOTDEALS
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2020-01-29 12:15:40.593  INFO 1844 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 2.3.1
+2020-01-29 12:15:40.593  INFO 1844 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 18a913733fb71c01
+2020-01-29 12:15:40.593  INFO 1844 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1580267740593
+2020-01-29 12:15:40.594  INFO 1844 --- [main] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-1, groupId=HOTDEALS] Subscribed to pattern: 'HOTDEALS.*'
+2020-01-29 12:15:40.597  INFO 1844 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService
+2020-01-29 12:15:40.626  INFO 1844 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-1, groupId=HOTDEALS] Cluster ID: 0D8vRnHtRKK8aPPRyO5Ysg
+2020-01-29 12:15:40.627  INFO 1844 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-01-29 12:15:40.629  INFO 1844 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Discovered group coordinator DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com:9092 (id: 2147483647 rack: null)
+2020-01-29 12:15:40.630  INFO 1844 --- [main] com.garage.poc.HotdealeventApplication   : Started HotdealeventApplication in 5.938 seconds (JVM running for 7.593)
+2020-01-29 12:15:40.632  INFO 1844 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Revoking previously assigned partitions []
+2020-01-29 12:15:40.633  INFO 1844 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : HOTDEALS: partitions revoked: []
+2020-01-29 12:15:40.633  INFO 1844 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] (Re-)joining group
+2020-01-29 12:15:40.669  INFO 1844 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] (Re-)joining group
+2020-01-29 12:15:40.818  INFO 1844 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Successfully joined group with generation 37
+2020-01-29 12:15:40.825  INFO 1844 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Setting newly assigned partitions: HOTDEALS.FCFS-0, HOTDEALS.PICK-0
+2020-01-29 12:15:40.843  INFO 1844 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Setting offset for partition HOTDEALS.FCFS-0 to the committed offset FetchPosition{offset=3, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com:9092 (id: 0 rack: null), epoch=0}}
+2020-01-29 12:15:40.844  INFO 1844 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Setting offset for partition HOTDEALS.PICK-0 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com:9092 (id: 0 rack: null), epoch=0}}
+2020-01-29 12:15:40.868  INFO 1844 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : HOTDEALS: partitions assigned: [HOTDEALS.FCFS-0, HOTDEALS.PICK-0]
+2020-01-29 12:15:58.818  INFO 1844 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-01-29 12:15:58.818  INFO 1844 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-01-29 12:15:58.829  INFO 1844 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2020-01-29 12:15:58.882  INFO 1844 --- [http-nio-8080-exec-1] c.g.p.controller.HotdealEventController  : ModelAndView [view="index"; model={msg=total: 55}]
+2020-01-29 12:16:20.234  WARN 1844 --- [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required boolean parameter 'agreement' is not present]
+2020-01-29 12:16:32.061  INFO 1844 --- [http-nio-8080-exec-7] c.g.p.controller.HotdealEventController  : ModelAndView [view="index"; model={msg=total: 55}]
+2020-01-29 12:18:33.929  INFO 1844 --- [RMI TCP Connection(3)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2020-01-29 12:18:33.935  INFO 1844 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Member consumer-1-56670788-866b-48e0-9985-350ee4a8fadd sending LeaveGroup request to coordinator DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com:9092 (id: 2147483647 rack: null)
+2020-01-29 12:18:33.936  INFO 1844 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-1, groupId=HOTDEALS] Unsubscribed all topics or patterns and assigned partitions
+2020-01-29 12:18:33.936  INFO 1844 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService
+2020-01-29 12:18:33.953  INFO 1844 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] essageListenerContainer$ListenerConsumer : HOTDEALS: Consumer stopped
+2020-01-29 12:18:33.973  INFO 1844 --- [RMI TCP Connection(3)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-29 12:18:46.679  INFO 10860 --- [main] com.garage.poc.HotdealeventApplication   : Starting HotdealeventApplication on DESKTOP-8EQSHKC with PID 10860 (D:\workspace-sts\hotdealevent\target\classes started by admin in D:\workspace-sts\hotdealevent)
+2020-01-29 12:18:46.683  INFO 10860 --- [main] com.garage.poc.HotdealeventApplication   : The following profiles are active: kafka
+2020-01-29 12:18:47.385  INFO 10860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-01-29 12:18:47.386  INFO 10860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-01-29 12:18:47.417  INFO 10860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8ms. Found 0 Redis repository interfaces.
+2020-01-29 12:18:47.635  INFO 10860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-01-29 12:18:47.636  INFO 10860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive Cassandra repositories in DEFAULT mode.
+2020-01-29 12:18:47.726  INFO 10860 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Reactive Cassandra - Could not safely identify store assignment for repository candidate interface com.garage.poc.redis.repository.CustomerRedisRepository. If you want this repository to be a Reactive Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.ReactiveCassandraRepository.
+2020-01-29 12:18:47.726  INFO 10860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 90ms. Found 0 Reactive Cassandra repository interfaces.
+2020-01-29 12:18:47.737  INFO 10860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-01-29 12:18:47.739  INFO 10860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Cassandra repositories in DEFAULT mode.
+2020-01-29 12:18:47.756  INFO 10860 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Cassandra - Could not safely identify store assignment for repository candidate interface com.garage.poc.redis.repository.CustomerRedisRepository. If you want this repository to be a Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.CassandraRepository.
+2020-01-29 12:18:47.785  INFO 10860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46ms. Found 1 Cassandra repository interfaces.
+2020-01-29 12:18:47.793  INFO 10860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-01-29 12:18:47.794  INFO 10860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-01-29 12:18:47.802  INFO 10860 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.garage.poc.cassandra.repository.CustomerCassandraRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2020-01-29 12:18:47.810  INFO 10860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15ms. Found 1 Redis repository interfaces.
+2020-01-29 12:18:48.278  INFO 10860 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-01-29 12:18:48.286  INFO 10860 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-29 12:18:48.286  INFO 10860 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-01-29 12:18:48.375  INFO 10860 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-29 12:18:48.376  INFO 10860 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1642 ms
+2020-01-29 12:18:48.440  INFO 10860 --- [main] com.datastax.driver.core                 : DataStax Java driver 3.7.2 for Apache Cassandra
+2020-01-29 12:18:48.444  INFO 10860 --- [main] c.d.driver.core.GuavaCompatibility       : Detected Guava >= 19 in the classpath, using modern compatibility layer
+2020-01-29 12:18:48.540  INFO 10860 --- [main] com.datastax.driver.core.Native          : Could not load JNR C Library, native system calls through this library will not be available (set this logger level to DEBUG to see the full stack trace).
+2020-01-29 12:18:48.540  INFO 10860 --- [main] com.datastax.driver.core.ClockFactory    : Using java.lang.System clock to generate timestamps.
+2020-01-29 12:18:48.830  INFO 10860 --- [main] com.datastax.driver.core.NettyUtil       : Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+2020-01-29 12:18:53.634  WARN 10860 --- [main] com.datastax.driver.core.Cluster         : You listed localhost/0:0:0:0:0:0:0:1:9042 in your contact points, but it wasn't found in the control host's system.peers at startup
+2020-01-29 12:18:53.760  WARN 10860 --- [main] licationStrategy$NetworkTopologyStrategy : Error while computing token map for keyspace demodb with datacenter datacenter1: could not achieve replication factor 3 (found 1 replicas only), check your keyspace replication settings.
+2020-01-29 12:18:53.764  WARN 10860 --- [main] licationStrategy$NetworkTopologyStrategy : Error while computing token map for keyspace hotdeals with datacenter DC1-kt-data-garage: could not achieve replication factor 3 (found 0 replicas only), check your keyspace replication settings.
+2020-01-29 12:18:53.767  INFO 10860 --- [main] c.d.d.c.p.DCAwareRoundRobinPolicy        : Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+2020-01-29 12:18:53.771  INFO 10860 --- [main] com.datastax.driver.core.Cluster         : New Cassandra host localhost/127.0.0.1:9042 added
+2020-01-29 12:18:54.661  INFO 10860 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-29 12:18:54.759  INFO 10860 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-01-29 12:18:55.016  INFO 10860 --- [main] o.a.k.clients.admin.AdminClientConfig    : AdminClientConfig values: 
+	bootstrap.servers = [localhost:9092]
+	client.dns.lookup = default
+	client.id = 
+	connections.max.idle.ms = 300000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 120000
+	retries = 5
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+
+2020-01-29 12:18:55.066  INFO 10860 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 2.3.1
+2020-01-29 12:18:55.067  INFO 10860 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 18a913733fb71c01
+2020-01-29 12:18:55.067  INFO 10860 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1580267935064
+2020-01-29 12:18:55.356  INFO 10860 --- [main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = default
+	client.id = 
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = HOTDEALS
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2020-01-29 12:18:55.396  INFO 10860 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 2.3.1
+2020-01-29 12:18:55.397  INFO 10860 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 18a913733fb71c01
+2020-01-29 12:18:55.397  INFO 10860 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1580267935396
+2020-01-29 12:18:55.398  INFO 10860 --- [main] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-1, groupId=HOTDEALS] Subscribed to pattern: 'HOTDEALS.*'
+2020-01-29 12:18:55.401  INFO 10860 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService
+2020-01-29 12:18:55.430  INFO 10860 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-1, groupId=HOTDEALS] Cluster ID: 0D8vRnHtRKK8aPPRyO5Ysg
+2020-01-29 12:18:55.431  INFO 10860 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Discovered group coordinator DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com:9092 (id: 2147483647 rack: null)
+2020-01-29 12:18:55.435  INFO 10860 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Revoking previously assigned partitions []
+2020-01-29 12:18:55.436  INFO 10860 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : HOTDEALS: partitions revoked: []
+2020-01-29 12:18:55.436  INFO 10860 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] (Re-)joining group
+2020-01-29 12:18:55.439  INFO 10860 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-01-29 12:18:55.442  INFO 10860 --- [main] com.garage.poc.HotdealeventApplication   : Started HotdealeventApplication in 9.502 seconds (JVM running for 11.558)
+2020-01-29 12:18:55.458  INFO 10860 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] (Re-)joining group
+2020-01-29 12:18:55.474  INFO 10860 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Successfully joined group with generation 39
+2020-01-29 12:18:55.479  INFO 10860 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Setting newly assigned partitions: HOTDEALS.FCFS-0, HOTDEALS.PICK-0
+2020-01-29 12:18:55.489  INFO 10860 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Setting offset for partition HOTDEALS.FCFS-0 to the committed offset FetchPosition{offset=3, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com:9092 (id: 0 rack: null), epoch=0}}
+2020-01-29 12:18:55.491  INFO 10860 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Setting offset for partition HOTDEALS.PICK-0 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com:9092 (id: 0 rack: null), epoch=0}}
+2020-01-29 12:18:55.503  INFO 10860 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : HOTDEALS: partitions assigned: [HOTDEALS.FCFS-0, HOTDEALS.PICK-0]
+2020-01-29 12:18:55.677  INFO 10860 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-01-29 12:18:55.678  INFO 10860 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-01-29 12:18:55.686  INFO 10860 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2020-01-29 12:18:55.733  INFO 10860 --- [http-nio-8080-exec-1] c.g.p.controller.HotdealEventController  : ModelAndView [view="index"; model={msg=total: 55}]
+2020-01-29 12:19:11.372  WARN 10860 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required boolean parameter 'agreement' is not present]
+2020-01-29 12:20:41.677  INFO 10860 --- [http-nio-8080-exec-7] c.g.poc.controller.CassandraController   : >>>>>>> [save] Customer{ eventId=2020011701 name=}
+2020-01-29 12:20:41.677  INFO 10860 --- [http-nio-8080-exec-7] c.g.poc.controller.CassandraController   : >>>>>>> [save] Customer{true
+2020-01-29 12:20:41.678  INFO 10860 --- [http-nio-8080-exec-7] c.g.poc.controller.CassandraController   : >>>>>>> [save] key=CustomerKey{phoneNo='', eventId=2020011701}
+2020-01-29 12:20:41.684  INFO 10860 --- [http-nio-8080-exec-7] c.g.poc.controller.CassandraController   : >>>>>>> [save] cust=Customer{key=CustomerKey{phoneNo='', eventId=2020011701}, name=, refreshTime=2020-01-29T12:20:41.684}
+2020-01-29 12:20:41.751 ERROR 10860 --- [http-nio-8080-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.data.cassandra.CassandraInvalidQueryException: SessionCallback; CQL [INSERT INTO customer (phone_no,event_id,name,refresh_time) VALUES ('','2020011701','',1580268041684);]; Key may not be empty; nested exception is com.datastax.driver.core.exceptions.InvalidQueryException: Key may not be empty] with root cause
+
+com.datastax.driver.core.exceptions.InvalidQueryException: Key may not be empty
+	at com.datastax.driver.core.Responses$Error.asException(Responses.java:181) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.DefaultResultSetFuture.onSet(DefaultResultSetFuture.java:215) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.RequestHandler.setFinalResult(RequestHandler.java:236) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.RequestHandler.access$2600(RequestHandler.java:62) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.RequestHandler$SpeculativeExecution.setFinalResult(RequestHandler.java:1005) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.RequestHandler$SpeculativeExecution.onSet(RequestHandler.java:808) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.Connection$Dispatcher.channelRead0(Connection.java:1240) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.Connection$Dispatcher.channelRead0(Connection.java:1158) ~[cassandra-driver-core-3.7.2.jar:na]
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:99) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:352) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:287) ~[netty-handler-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:352) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102) ~[netty-codec-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:352) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:326) ~[netty-codec-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:300) ~[netty-codec-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:352) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.ChannelInboundHandlerAdapter.channelRead(ChannelInboundHandlerAdapter.java:93) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at com.datastax.driver.core.InboundTrafficMeter.channelRead(InboundTrafficMeter.java:38) ~[cassandra-driver-core-3.7.2.jar:na]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:352) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1422) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:931) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:700) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:635) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:552) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:514) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$6.run(SingleThreadEventExecutor.java:1050) ~[netty-common-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.43.Final.jar:4.1.43.Final]
+	at java.lang.Thread.run(Unknown Source) [na:1.8.0_231]
+
+2020-01-29 12:22:33.098  INFO 10860 --- [http-nio-8080-exec-8] c.g.poc.controller.CassandraController   : >>>>>>> [save] Customer{ eventId=2020011701 name=}
+2020-01-29 12:22:33.099  INFO 10860 --- [http-nio-8080-exec-8] c.g.poc.controller.CassandraController   : >>>>>>> [save] Customer{true
+2020-01-29 12:22:33.099  INFO 10860 --- [http-nio-8080-exec-8] c.g.poc.controller.CassandraController   : >>>>>>> [save] key=CustomerKey{phoneNo='', eventId=2020011701}
+2020-01-29 12:22:33.099  INFO 10860 --- [http-nio-8080-exec-8] c.g.poc.controller.CassandraController   : >>>>>>> [save] cust=Customer{key=CustomerKey{phoneNo='', eventId=2020011701}, name=, refreshTime=2020-01-29T12:22:33.099}
+2020-01-29 12:22:33.105 ERROR 10860 --- [http-nio-8080-exec-8] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.data.cassandra.CassandraInvalidQueryException: SessionCallback; CQL [INSERT INTO customer (phone_no,event_id,name,refresh_time) VALUES ('','2020011701','',1580268153099);]; Key may not be empty; nested exception is com.datastax.driver.core.exceptions.InvalidQueryException: Key may not be empty] with root cause
+
+com.datastax.driver.core.exceptions.InvalidQueryException: Key may not be empty
+	at com.datastax.driver.core.Responses$Error.asException(Responses.java:181) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.DefaultResultSetFuture.onSet(DefaultResultSetFuture.java:215) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.RequestHandler.setFinalResult(RequestHandler.java:236) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.RequestHandler.access$2600(RequestHandler.java:62) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.RequestHandler$SpeculativeExecution.setFinalResult(RequestHandler.java:1005) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.RequestHandler$SpeculativeExecution.onSet(RequestHandler.java:808) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.Connection$Dispatcher.channelRead0(Connection.java:1240) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.Connection$Dispatcher.channelRead0(Connection.java:1158) ~[cassandra-driver-core-3.7.2.jar:na]
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:99) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:352) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:287) ~[netty-handler-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:352) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102) ~[netty-codec-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:352) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:326) ~[netty-codec-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:300) ~[netty-codec-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:352) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.ChannelInboundHandlerAdapter.channelRead(ChannelInboundHandlerAdapter.java:93) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at com.datastax.driver.core.InboundTrafficMeter.channelRead(InboundTrafficMeter.java:38) ~[cassandra-driver-core-3.7.2.jar:na]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:352) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1422) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:931) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:700) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:635) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:552) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:514) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$6.run(SingleThreadEventExecutor.java:1050) ~[netty-common-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.43.Final.jar:4.1.43.Final]
+	at java.lang.Thread.run(Unknown Source) [na:1.8.0_231]
+
+2020-01-29 12:25:08.858  INFO 10860 --- [RMI TCP Connection(5)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2020-01-29 12:25:08.866  INFO 10860 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Member consumer-1-a7d1ed7a-3fbf-4ba9-85f3-1a480601b11c sending LeaveGroup request to coordinator DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com:9092 (id: 2147483647 rack: null)
+2020-01-29 12:25:08.868  INFO 10860 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-1, groupId=HOTDEALS] Unsubscribed all topics or patterns and assigned partitions
+2020-01-29 12:25:08.868  INFO 10860 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService
+2020-01-29 12:25:08.883  INFO 10860 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] essageListenerContainer$ListenerConsumer : HOTDEALS: Consumer stopped
+2020-01-29 12:25:08.898  INFO 10860 --- [RMI TCP Connection(5)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-29 12:25:20.530  INFO 15080 --- [main] com.garage.poc.HotdealeventApplication   : Starting HotdealeventApplication on DESKTOP-8EQSHKC with PID 15080 (D:\workspace-sts\hotdealevent\target\classes started by admin in D:\workspace-sts\hotdealevent)
+2020-01-29 12:25:20.533  INFO 15080 --- [main] com.garage.poc.HotdealeventApplication   : The following profiles are active: kafka
+2020-01-29 12:25:20.945  INFO 15080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-01-29 12:25:20.946  INFO 15080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-01-29 12:25:20.961  INFO 15080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4ms. Found 0 Redis repository interfaces.
+2020-01-29 12:25:21.084  INFO 15080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-01-29 12:25:21.085  INFO 15080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive Cassandra repositories in DEFAULT mode.
+2020-01-29 12:25:21.132  INFO 15080 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Reactive Cassandra - Could not safely identify store assignment for repository candidate interface com.garage.poc.redis.repository.CustomerRedisRepository. If you want this repository to be a Reactive Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.ReactiveCassandraRepository.
+2020-01-29 12:25:21.133  INFO 15080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47ms. Found 0 Reactive Cassandra repository interfaces.
+2020-01-29 12:25:21.136  INFO 15080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-01-29 12:25:21.137  INFO 15080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Cassandra repositories in DEFAULT mode.
+2020-01-29 12:25:21.144  INFO 15080 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Cassandra - Could not safely identify store assignment for repository candidate interface com.garage.poc.redis.repository.CustomerRedisRepository. If you want this repository to be a Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.CassandraRepository.
+2020-01-29 12:25:21.164  INFO 15080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27ms. Found 1 Cassandra repository interfaces.
+2020-01-29 12:25:21.174  INFO 15080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-01-29 12:25:21.174  INFO 15080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-01-29 12:25:21.184  INFO 15080 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.garage.poc.cassandra.repository.CustomerCassandraRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2020-01-29 12:25:21.192  INFO 15080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17ms. Found 1 Redis repository interfaces.
+2020-01-29 12:25:21.615  INFO 15080 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-01-29 12:25:21.622  INFO 15080 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-29 12:25:21.623  INFO 15080 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-01-29 12:25:21.724  INFO 15080 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-29 12:25:21.724  INFO 15080 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1160 ms
+2020-01-29 12:25:21.793  INFO 15080 --- [main] com.datastax.driver.core                 : DataStax Java driver 3.7.2 for Apache Cassandra
+2020-01-29 12:25:21.798  INFO 15080 --- [main] c.d.driver.core.GuavaCompatibility       : Detected Guava >= 19 in the classpath, using modern compatibility layer
+2020-01-29 12:25:21.909  INFO 15080 --- [main] com.datastax.driver.core.Native          : Could not load JNR C Library, native system calls through this library will not be available (set this logger level to DEBUG to see the full stack trace).
+2020-01-29 12:25:21.909  INFO 15080 --- [main] com.datastax.driver.core.ClockFactory    : Using java.lang.System clock to generate timestamps.
+2020-01-29 12:25:22.218  INFO 15080 --- [main] com.datastax.driver.core.NettyUtil       : Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+2020-01-29 12:25:26.155  WARN 15080 --- [main] com.datastax.driver.core.Cluster         : You listed localhost/0:0:0:0:0:0:0:1:9042 in your contact points, but it wasn't found in the control host's system.peers at startup
+2020-01-29 12:25:26.236  WARN 15080 --- [main] licationStrategy$NetworkTopologyStrategy : Error while computing token map for keyspace demodb with datacenter datacenter1: could not achieve replication factor 3 (found 1 replicas only), check your keyspace replication settings.
+2020-01-29 12:25:26.238  WARN 15080 --- [main] licationStrategy$NetworkTopologyStrategy : Error while computing token map for keyspace hotdeals with datacenter DC1-kt-data-garage: could not achieve replication factor 3 (found 0 replicas only), check your keyspace replication settings.
+2020-01-29 12:25:26.239  INFO 15080 --- [main] c.d.d.c.p.DCAwareRoundRobinPolicy        : Using data-center name 'datacenter1' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+2020-01-29 12:25:26.240  INFO 15080 --- [main] com.datastax.driver.core.Cluster         : New Cassandra host localhost/127.0.0.1:9042 added
+2020-01-29 12:25:26.681  INFO 15080 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-29 12:25:26.735  INFO 15080 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-01-29 12:25:26.926  INFO 15080 --- [main] o.a.k.clients.admin.AdminClientConfig    : AdminClientConfig values: 
+	bootstrap.servers = [localhost:9092]
+	client.dns.lookup = default
+	client.id = 
+	connections.max.idle.ms = 300000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 120000
+	retries = 5
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+
+2020-01-29 12:25:26.958  INFO 15080 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 2.3.1
+2020-01-29 12:25:26.958  INFO 15080 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 18a913733fb71c01
+2020-01-29 12:25:26.958  INFO 15080 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1580268326957
+2020-01-29 12:25:27.139  INFO 15080 --- [main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = default
+	client.id = 
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = HOTDEALS
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2020-01-29 12:25:27.163  INFO 15080 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 2.3.1
+2020-01-29 12:25:27.163  INFO 15080 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 18a913733fb71c01
+2020-01-29 12:25:27.163  INFO 15080 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1580268327163
+2020-01-29 12:25:27.164  INFO 15080 --- [main] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-1, groupId=HOTDEALS] Subscribed to pattern: 'HOTDEALS.*'
+2020-01-29 12:25:27.166  INFO 15080 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService
+2020-01-29 12:25:27.190  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-1, groupId=HOTDEALS] Cluster ID: 0D8vRnHtRKK8aPPRyO5Ysg
+2020-01-29 12:25:27.191  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Discovered group coordinator DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com:9092 (id: 2147483647 rack: null)
+2020-01-29 12:25:27.194  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Revoking previously assigned partitions []
+2020-01-29 12:25:27.195  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : HOTDEALS: partitions revoked: []
+2020-01-29 12:25:27.195  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] (Re-)joining group
+2020-01-29 12:25:27.199  INFO 15080 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-01-29 12:25:27.204  INFO 15080 --- [main] com.garage.poc.HotdealeventApplication   : Started HotdealeventApplication in 7.032 seconds (JVM running for 8.673)
+2020-01-29 12:25:27.208  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] (Re-)joining group
+2020-01-29 12:25:27.222  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Successfully joined group with generation 41
+2020-01-29 12:25:27.227  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Setting newly assigned partitions: HOTDEALS.FCFS-0, HOTDEALS.PICK-0
+2020-01-29 12:25:27.234  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Setting offset for partition HOTDEALS.FCFS-0 to the committed offset FetchPosition{offset=3, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com:9092 (id: 0 rack: null), epoch=0}}
+2020-01-29 12:25:27.235  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Setting offset for partition HOTDEALS.PICK-0 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com:9092 (id: 0 rack: null), epoch=0}}
+2020-01-29 12:25:27.241  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : HOTDEALS: partitions assigned: [HOTDEALS.FCFS-0, HOTDEALS.PICK-0]
+2020-01-29 12:25:34.969  INFO 15080 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-01-29 12:25:34.969  INFO 15080 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-01-29 12:25:34.978  INFO 15080 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2020-01-29 12:25:35.033  INFO 15080 --- [http-nio-8080-exec-1] c.g.p.controller.HotdealEventController  : ModelAndView [view="index"; model={msg=total: 55}]
+2020-01-29 12:39:12.788  INFO 15080 --- [http-nio-8080-exec-7] c.g.poc.controller.CassandraController   : >>>>>>> [save] Customer{010-6755-5755 eventId=2020011701 name=우경덕}
+2020-01-29 12:39:12.788  INFO 15080 --- [http-nio-8080-exec-7] c.g.poc.controller.CassandraController   : >>>>>>> [save] Customer{true
+2020-01-29 12:39:12.789  INFO 15080 --- [http-nio-8080-exec-7] c.g.poc.controller.CassandraController   : >>>>>>> [save] key=CustomerKey{phoneNo='010-6755-5755', eventId=2020011701}
+2020-01-29 12:39:12.794  INFO 15080 --- [http-nio-8080-exec-7] c.g.poc.controller.CassandraController   : >>>>>>> [save] cust=Customer{key=CustomerKey{phoneNo='010-6755-5755', eventId=2020011701}, name=우경덕, refreshTime=2020-01-29T12:39:12.794}
+2020-01-29 12:39:12.864  INFO 15080 --- [http-nio-8080-exec-7] c.g.poc.controller.CassandraController   : >>>>>>> [save] cust=Customer{key=CustomerKey{phoneNo='010-6755-5755', eventId=2020011701}, name=우경덕, refreshTime=2020-01-29T12:39:12.794}
+2020-01-29 12:39:12.864  INFO 15080 --- [http-nio-8080-exec-7] c.g.poc.controller.CassandraController   : >>>>>>> [save] cust=Customer{key=CustomerKey{phoneNo='010-6755-5755', eventId=2020011701}, name=우경덕, refreshTime=2020-01-29T12:39:12.794}
+2020-01-29 14:36:03.622  INFO 15080 --- [http-nio-8080-exec-2] c.g.poc.controller.CassandraController   : >>>>>>> [save] Customer{ eventId=2020011701 name=}
+2020-01-29 14:36:03.623  INFO 15080 --- [http-nio-8080-exec-2] c.g.poc.controller.CassandraController   : >>>>>>> [save] Customer{true
+2020-01-29 14:36:03.623  INFO 15080 --- [http-nio-8080-exec-2] c.g.poc.controller.CassandraController   : >>>>>>> [save] key=CustomerKey{phoneNo='', eventId=2020011701}
+2020-01-29 14:36:03.624  INFO 15080 --- [http-nio-8080-exec-2] c.g.poc.controller.CassandraController   : >>>>>>> [save] cust=Customer{key=CustomerKey{phoneNo='', eventId=2020011701}, name=, refreshTime=2020-01-29T14:36:03.623}
+2020-01-29 14:36:03.646 ERROR 15080 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.data.cassandra.CassandraInvalidQueryException: SessionCallback; CQL [INSERT INTO customer (phone_no,event_id,name,refresh_time) VALUES ('','2020011701','',1580276163623);]; Key may not be empty; nested exception is com.datastax.driver.core.exceptions.InvalidQueryException: Key may not be empty] with root cause
+
+com.datastax.driver.core.exceptions.InvalidQueryException: Key may not be empty
+	at com.datastax.driver.core.Responses$Error.asException(Responses.java:181) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.DefaultResultSetFuture.onSet(DefaultResultSetFuture.java:215) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.RequestHandler.setFinalResult(RequestHandler.java:236) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.RequestHandler.access$2600(RequestHandler.java:62) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.RequestHandler$SpeculativeExecution.setFinalResult(RequestHandler.java:1005) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.RequestHandler$SpeculativeExecution.onSet(RequestHandler.java:808) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.Connection$Dispatcher.channelRead0(Connection.java:1240) ~[cassandra-driver-core-3.7.2.jar:na]
+	at com.datastax.driver.core.Connection$Dispatcher.channelRead0(Connection.java:1158) ~[cassandra-driver-core-3.7.2.jar:na]
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:99) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:352) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:287) ~[netty-handler-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:352) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102) ~[netty-codec-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:352) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:326) ~[netty-codec-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:300) ~[netty-codec-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:352) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.ChannelInboundHandlerAdapter.channelRead(ChannelInboundHandlerAdapter.java:93) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at com.datastax.driver.core.InboundTrafficMeter.channelRead(InboundTrafficMeter.java:38) ~[cassandra-driver-core-3.7.2.jar:na]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:352) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1422) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:931) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:700) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:635) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:552) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:514) ~[netty-transport-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$6.run(SingleThreadEventExecutor.java:1050) ~[netty-common-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.43.Final.jar:4.1.43.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.43.Final.jar:4.1.43.Final]
+	at java.lang.Thread.run(Unknown Source) [na:1.8.0_231]
+
+2020-01-29 15:56:36.611  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.kafka.clients.FetchSessionHandler    : [Consumer clientId=consumer-1, groupId=HOTDEALS] Error sending fetch request (sessionId=1574999832, epoch=25198) to node 0: org.apache.kafka.common.errors.DisconnectException.
+2020-01-29 15:56:36.613  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Group coordinator DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com:9092 (id: 2147483647 rack: null) is unavailable or invalid, will attempt rediscovery
+2020-01-29 15:56:38.670  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:56:40.808  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:56:43.013  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:56:45.473  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:56:48.190  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:56:51.164  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:56:54.338  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:56:57.255  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:57:00.475  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:57:03.647  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:57:06.674  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:57:09.696  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:57:12.879  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:57:15.965  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:57:18.883  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:57:22.104  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:57:25.274  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:57:28.342  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:57:31.221  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:57:34.393  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:57:37.308  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:57:40.479  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:57:43.598  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:57:46.778  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:57:49.849  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:57:52.717  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:57:55.683  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:57:58.752  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:58:01.616  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:58:04.684  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:58:07.857  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:58:10.722  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:58:13.740  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:58:16.609  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:58:19.630  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:58:22.549  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:58:25.716  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:58:28.586  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:58:31.785  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:58:34.956  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:58:38.138  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:58:41.231  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:58:44.454  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:58:47.573  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:58:50.543  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:58:53.412  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:58:56.488  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:58:59.405  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:59:02.474  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:59:05.643  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:59:08.664  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:59:11.536  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:59:14.557  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:59:17.420  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:59:20.388  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:59:23.511  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:59:26.741  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:59:29.707  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:59:32.624  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:59:35.542  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:59:38.507  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:59:41.389  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:59:44.458  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:59:47.528  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:59:50.731  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:59:53.703  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:59:56.552  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 15:59:59.673  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 16:00:02.788  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 16:00:05.735  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 16:00:08.599  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 16:00:11.801  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 16:00:14.868  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 16:00:17.837  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 16:00:20.952  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 16:00:23.871  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 16:00:27.041  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 16:00:30.006  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 16:00:33.123  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 16:00:36.043  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 16:00:38.856  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 16:00:41.770  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 16:00:44.748  WARN 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=HOTDEALS] Connection to node 0 (DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com/9.240.101.113:9092) could not be established. Broker may not be available.
+2020-01-29 16:00:47.810  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-1, groupId=HOTDEALS] Cluster ID: syqznDsKQoy1fDWJ9VZOmQ
+2020-01-29 16:00:52.007  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Discovered group coordinator DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com:9092 (id: 2147483647 rack: null)
+2020-01-29 16:00:52.008  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Revoking previously assigned partitions [HOTDEALS.FCFS-0, HOTDEALS.PICK-0]
+2020-01-29 16:00:52.009  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : HOTDEALS: partitions revoked: [HOTDEALS.FCFS-0, HOTDEALS.PICK-0]
+2020-01-29 16:00:52.009  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] (Re-)joining group
+2020-01-29 16:00:52.015  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Attempt to heartbeat failed for since member id consumer-1-92a34fb5-c71f-4335-bc13-f66e9ab00daa is not valid.
+2020-01-29 16:00:52.020  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] (Re-)joining group
+2020-01-29 16:00:52.034  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] (Re-)joining group
+2020-01-29 16:00:52.123  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Successfully joined group with generation 1
+2020-01-29 16:00:52.123  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Setting newly assigned partitions: 
+2020-01-29 16:00:52.123  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : HOTDEALS: partitions assigned: []
+2020-01-29 16:05:52.005  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Revoking previously assigned partitions []
+2020-01-29 16:05:52.005  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : HOTDEALS: partitions revoked: []
+2020-01-29 16:05:52.005  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] (Re-)joining group
+2020-01-29 16:05:52.014  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Successfully joined group with generation 2
+2020-01-29 16:05:52.015  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Setting newly assigned partitions: 
+2020-01-29 16:05:52.015  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : HOTDEALS: partitions assigned: []
+2020-01-29 17:12:53.847  INFO 15080 --- [RMI TCP Connection(6)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2020-01-29 17:12:53.861  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=consumer-1, groupId=HOTDEALS] Member consumer-1-5d836a39-2930-424c-90f2-c771b2ccd130 sending LeaveGroup request to coordinator DESKTOP-8EQSHKC.j1c-kr.ibmmobiledemo.com:9092 (id: 2147483647 rack: null)
+2020-01-29 17:12:53.863  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-1, groupId=HOTDEALS] Unsubscribed all topics or patterns and assigned partitions
+2020-01-29 17:12:53.863  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService
+2020-01-29 17:12:53.883  INFO 15080 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] essageListenerContainer$ListenerConsumer : HOTDEALS: Consumer stopped
+2020-01-29 17:12:53.901  INFO 15080 --- [RMI TCP Connection(6)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
